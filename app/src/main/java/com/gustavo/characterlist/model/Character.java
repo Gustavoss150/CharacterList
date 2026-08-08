@@ -1,5 +1,7 @@
 package com.gustavo.characterlist.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class Character {
@@ -8,7 +10,8 @@ public class Character {
     private String name;
     private String image;
     private Location location;
-    private List<String> episode;
+    @SerializedName("episode")
+    private List<String> episodeURL;
 
     public Integer getId() {
         return id;
@@ -42,15 +45,15 @@ public class Character {
         this.location = location;
     }
 
-    public List<String> getEpisode() {
-        return episode;
+    public List<String> getEpisodeURL() {
+        return episodeURL;
     }
 
-    public void setEpisode(List<String> episode) {
-        this.episode = episode;
+    public void setEpisodeURL(List<String> episode) {
+        this.episodeURL = episodeURL;
     }
 
-    public String getFirstEpisodeUrl() {
-        return (episode != null && !episode.isEmpty()) ? episode.get(0) : null;
+    public String getFirstEpisodeURL() {
+        return (episodeURL != null && !episodeURL.isEmpty()) ? episodeURL.get(0) : null;
     }
 }

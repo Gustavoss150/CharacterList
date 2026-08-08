@@ -6,7 +6,7 @@ public class CharacterResponse {
 
     private List<Character> results;
 
-    public List<Character> getResults() {
+    public List<java.lang.Character> getResults() {
         return results;
     }
 

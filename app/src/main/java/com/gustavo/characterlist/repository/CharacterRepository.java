@@ -6,6 +6,7 @@ import com.gustavo.characterlist.model.CharacterResponse;
 import com.gustavo.characterlist.model.Episode;
 import com.gustavo.characterlist.network.CharacterAPI;
 import com.gustavo.characterlist.network.RetrofitClient;
+import com.gustavo.characterlist.model.Character;
 
 import java.util.List;
 

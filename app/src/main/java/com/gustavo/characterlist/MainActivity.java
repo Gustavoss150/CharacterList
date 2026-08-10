@@ -7,14 +7,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gustavo.characterlist.ui.CharacterAdapter;
 import com.gustavo.characterlist.viewmodel.CharacterViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerCharacter;
-
+    private CharacterAdapter adapter;
     private CharacterViewModel viewModel;
 
     @Override
@@ -29,6 +32,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recyclerCharacter = findViewById(R.id.recyclerCharacter);
+        viewModel = new ViewModelProvider(this).get(CharacterViewModel.class);
 
+        recyclerCharacter.setLayoutManager(new LinearLayoutManager(this));
+        viewModel.getPersonagens().observe(this, personagens -> {
+            recyclerCharacter.setAdapter(new CharacterAdapter(personagens));
+        });
+        viewModel.loadPersonagens();
     }
 }

@@ -3,10 +3,10 @@ package com.gustavo.characterlist.repository;
 import androidx.annotation.NonNull;
 
 import com.gustavo.characterlist.model.CharacterResponse;
-import com.gustavo.characterlist.model.Episode;
+import com.gustavo.characterlist.model.Episodes;
 import com.gustavo.characterlist.network.CharacterAPI;
 import com.gustavo.characterlist.network.RetrofitClient;
-import com.gustavo.characterlist.model.Character;
+import com.gustavo.characterlist.model.Characters;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class CharacterRepository {
 
     private final CharacterAPI api = RetrofitClient.getInstance().create(CharacterAPI.class);
 
-    public void listarPersonagens(RepositoryCallback<List<Character>> callback) {
+    public void listarPersonagens(RepositoryCallback<List<Characters>> callback) {
         Call<CharacterResponse> call = api.listCharacter();
         call.enqueue(new Callback<CharacterResponse>() {
             @Override
@@ -37,10 +37,10 @@ public class CharacterRepository {
     }
 
     public void getEpisode(String episodeUrl, RepositoryCallback<String> callback) {
-        Call<Episode> call = api.getEpisode(episodeUrl);
-        call.enqueue(new Callback<Episode>() {
+        Call<Episodes> call = api.getEpisode(episodeUrl);
+        call.enqueue(new Callback<Episodes>() {
             @Override
-            public void onResponse(@NonNull Call<Episode> call, @NonNull Response<Episode> response) {
+            public void onResponse(@NonNull Call<Episodes> call, @NonNull Response<Episodes> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     callback.onSuccess(response.body().getName());
                 } else {
@@ -48,7 +48,7 @@ public class CharacterRepository {
                 }            }
 
             @Override
-            public void onFailure(@NonNull Call<Episode> call, @NonNull Throwable throwable) {
+            public void onFailure(@NonNull Call<Episodes> call, @NonNull Throwable throwable) {
                 callback.onError("Falha de rede: " + throwable.getMessage());
             }
         });

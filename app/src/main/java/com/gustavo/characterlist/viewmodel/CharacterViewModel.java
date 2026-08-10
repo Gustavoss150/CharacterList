@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.gustavo.characterlist.model.Character;
+import com.gustavo.characterlist.model.Characters;
 import com.gustavo.characterlist.repository.CharacterRepository;
 import com.gustavo.characterlist.repository.RepositoryCallback;
 
@@ -12,15 +12,15 @@ import java.util.List;
 
 public class CharacterViewModel extends ViewModel {
 
-    private final MutableLiveData<List<Character>> personagens = new MutableLiveData<>();
+    private final MutableLiveData<List<Characters>> personagens = new MutableLiveData<>();
     private final  MutableLiveData<String> erro = new MutableLiveData<>();
 
-    private CharacterRepository repository;
+    private final CharacterRepository repository = new CharacterRepository();
 
     public void loadPersonagens() {
-        repository.listarPersonagens(new RepositoryCallback<List<Character>>() {
+        repository.listarPersonagens(new RepositoryCallback<List<Characters>>() {
             @Override
-            public void onSuccess(List<Character> data) {
+            public void onSuccess(List<Characters> data) {
                 personagens.postValue(data);
             }
 
@@ -31,7 +31,7 @@ public class CharacterViewModel extends ViewModel {
         });
     }
 
-    public LiveData<List<Character>> getPersonagens() {
+    public LiveData<List<Characters>> getPersonagens() {
         return personagens;
     }
 

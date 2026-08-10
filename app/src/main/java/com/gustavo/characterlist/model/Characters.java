@@ -1,10 +1,12 @@
 package com.gustavo.characterlist.model;
 
+import android.provider.CallLog;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class Character {
+public class Characters {
 
     private Integer id;
     private String name;

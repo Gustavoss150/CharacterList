@@ -1,6 +1,6 @@
 package com.gustavo.characterlist.model;
 
-public class Episode {
+public class Episodes {
 
     private Integer id;
     private String name;

@@ -9,9 +9,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.gustavo.characterlist.viewmodel.CharacterViewModel;
+
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerCharacter;
+
+    private CharacterViewModel viewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +29,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recyclerCharacter = findViewById(R.id.recyclerCharacter);
-       // recyclerCharacter = setLa
+
     }
 }

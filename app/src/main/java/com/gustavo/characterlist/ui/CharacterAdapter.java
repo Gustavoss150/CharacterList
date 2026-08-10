@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.gustavo.characterlist.R;
 import com.gustavo.characterlist.model.Characters;
 
@@ -36,7 +37,7 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.View
         Characters personagem = personagens.get(position);
         holder.textCharacter.setText(personagem.getName());
         holder.locationCharacter.setText(personagem.getLocation().getName());
-        // holder.imageCharacter.set
+        Glide.with(holder.itemView.getContext()).load(personagem.getImage()).into(holder.imageCharacter);
     }
 
     @Override
